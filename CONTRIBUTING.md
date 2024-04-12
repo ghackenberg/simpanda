@@ -1,3 +1,3 @@
 # Contributing
 
-*Coming soon*
+Please contact georg.hackenberg@fh-wels.at.

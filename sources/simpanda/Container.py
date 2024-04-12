@@ -15,13 +15,13 @@ from time import time
 
 class Container:
 
-    def __init__(self, sim_time_real_time_factor: float, sim_time_until: SimTime):
+    def __init__(self, sim_time_to_real_time_ratio: float):
 
         # Remember ratio between simulation and real time
-        self.sim_time_real_time_factor = sim_time_real_time_factor
+        self.sim_time_to_real_time_ratio = sim_time_to_real_time_ratio
 
         # Remember simulation time
-        self.sim_time_until = sim_time_until
+        self.sim_time_until: float = None
 
         # Remember real times
         self.real_time_start: float = None
@@ -29,7 +29,7 @@ class Container:
         self.real_time_now: float = None
 
         # Create simulation
-        self.env = RealtimeEnvironment(factor=sim_time_real_time_factor, strict=False)
+        self.env = RealtimeEnvironment(factor=sim_time_to_real_time_ratio, strict=False)
 
         # Define window properties
         props = WindowProperties()
@@ -44,7 +44,10 @@ class Container:
         self.app.render.setAntialias(AntialiasAttrib.MMultisample)
         self.app.taskMgr.add(self._update, "update")
     
-    def run(self):
+    def run(self, sim_time_duration: SimTime):
+
+        # Remember simulation time
+        self.sim_time_until = sim_time_duration
 
         # Start simulation
         Thread(target=self._run).start()
@@ -70,7 +73,7 @@ class Container:
         self.real_time_now = time()
 
         # Calculate real time maximum
-        realtime_maximum = self.sim_time_until / self.sim_time_real_time_factor
+        realtime_maximum = self.sim_time_until / self.sim_time_to_real_time_ratio
 
         # Calculate real time current
         realtime_current = self.real_time_now - self.real_time_start
