@@ -1,6 +1,9 @@
 # Panda3D dependencies
 from direct.showbase.ShowBase import ShowBase
 from direct.task import Task
+from panda3d.core import AntialiasAttrib
+from panda3d.core import loadPrcFileData
+from panda3d.core import WindowProperties
 
 # SimPy dependencies
 from simpy.rt import SimTime
@@ -28,8 +31,17 @@ class Container:
         # Create simulation
         self.env = RealtimeEnvironment(factor=sim_time_real_time_factor, strict=False)
 
+        # Define window properties
+        props = WindowProperties()
+        props.setTitle('SimPanda')
+
+        # Define render properties
+        loadPrcFileData('', 'framebuffer-multisample 1\nmultisamples 64')
+
         # Create visualization
         self.app = ShowBase()
+        self.app.win.requestProperties(props)
+        self.app.render.setAntialias(AntialiasAttrib.MMultisample)
         self.app.taskMgr.add(self._update, "update")
     
     def run(self):

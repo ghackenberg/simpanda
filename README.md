@@ -12,7 +12,7 @@ We use the boilerplate code at the [School of Engineering](https://fh-ooe.at/cam
 
 ## 🖼️ Screenshots
 
-*Coming soon*
+![](./images/screenshot.png)
 
 ## ⚙️ Requirements
 
@@ -35,12 +35,17 @@ pip install panda3d
 ## 🧑‍💻 Snippets
 
 ```python
-import direct.showbase.ShowBase
-import direct.task.Task
-import simpy
-import simpy.rt
+from simpanda import Container
+from simpanda import cubeNodePath
 
-# TODO
+# Create container including simulation environment and visualization window
+container = Container(1, 10)
+
+# Create cube geometry and attach it to visualization window
+cubeNodePath().reparentTo(container.app.render)
+
+# Start simulation and visualization threads
+container.run()
 ```
 
 ## 📁 Folders
