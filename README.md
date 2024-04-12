@@ -10,11 +10,15 @@
 
 ### SimPy
 
+SimPy provides **discrete event simulation capabilities** for Python programs.
+
 ```sh
 pip install simpy
 ```
 
 ### Panda3D
+
+Panda3D provides **hardware-accelerated 3D visualization capabilities** for Python programs.
 
 ```sh
 pip install panda3d
