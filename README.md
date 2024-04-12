@@ -4,9 +4,9 @@
 
 This project contains **boilerplate code** for combined **discrete event simulation (DES)** and **hardware-accelerated 3D visualization** with ...
 
-- the **Python** programming language,
-- the **SimPy** discrete event simulation library, and
-- the **Panda3D** visulization framework.
+- the [Python](https://www.python.org/) programming language,
+- the [SimPy](https://simpy.readthedocs.io/en/latest/) discrete event simulation library, and
+- the [Panda3D](https://www.panda3d.org/) visulization framework.
 
 We use the boilerplate code at the [School of Engineering](https://fh-ooe.at/campus-wels) of the [University of Applied Sciences Upper Austria](https://fh-ooe.at/) in courses on **computer simulation** and **digital factory**.
 
