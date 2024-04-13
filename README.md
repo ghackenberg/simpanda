@@ -16,13 +16,13 @@ The following example shows how to use the `simpanda` package for building discr
 
 ```python
 from simpanda import Container
-from simpanda import cubeNodePath
+from simpanda import cube
 
 # Create container including simulation environment and visualization window
 container = Container(sim_time_to_real_time_ratio=1)
 
-# Create cube geometry and attach it to visualization window
-cubeNodePath().reparentTo(container.app.render)
+# Create red cube geometry and attach it to visualization window
+cube(1, 0, 0).reparentTo(container.app.render)
 
 # Start simulation and visualization threads
 container.run(sim_time_duration=10)
